@@ -1,0 +1,10 @@
+#root {
+  max-width: 1280px;
+  height: 100vh;
+}
+
+@media screen and (min-width: 600px) {
+  #root {
+    width: 100%;
+  }
+}
