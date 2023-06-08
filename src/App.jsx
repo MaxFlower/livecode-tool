@@ -10,14 +10,12 @@ import Home from "./Home/index.jsx";
 
 function App() {
   return (
-     <BrowserRouter basename={import.meta.env.DEV ? '/' : '/livecode-tool/'}>
-        <Router>
-            <Routes>
-                <Route exact path="/editor" element={<Editor />} />
-                <Route exact path="/" element={<Home />} />
-            </Routes>
-        </Router>
-     </BrowserRouter>
+    <Router basename={import.meta.env.DEV ? '/' : '/livecode-tool/'}>
+        <Routes>
+            <Route exact path="/editor" element={<Editor />} />
+            <Route exact path="/" element={<Home />} />
+        </Routes>
+    </Router>
   )
 }
 
