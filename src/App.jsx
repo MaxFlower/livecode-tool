@@ -10,7 +10,7 @@ import Home from "./Home/index.jsx";
 function App() {
   return (
     <Router>
-        <Routes>
+        <Routes basename="/livecode-tool">
             <Route exact path="/editor" element={<Editor />} />
             <Route exact path="/" element={<Home />} />
         </Routes>

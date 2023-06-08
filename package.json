@@ -1,6 +1,7 @@
 {
   "name": "pragmateam-livecode-tool",
-  "private": true,
+  "homepage": "https://maxflower.github.io/livecode-tool",
+  "private": false,
   "version": "1.0.0",
   "type": "module",
   "scripts": {
