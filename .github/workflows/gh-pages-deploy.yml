@@ -26,13 +26,16 @@ jobs:
       - name: Set up Node 🛠
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
           cache: 'npm'
         
       - name: Install dependencies & Build files 💻
         run: |
           npm install  
           npm run build
+
+      - name: Setup Pages 📘
+        uses: actions/configure-pages@v3
 
       - name: Upload artifact 📥
         uses: actions/upload-pages-artifact@v1
