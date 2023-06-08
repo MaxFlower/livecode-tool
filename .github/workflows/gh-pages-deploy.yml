@@ -24,7 +24,7 @@ jobs:
           npm run build
      
       - name: Deploy 🚀
-        uses: MaxFlower/livecode-tool
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
           folder: dist
