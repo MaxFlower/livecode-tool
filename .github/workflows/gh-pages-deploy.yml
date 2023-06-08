@@ -1,31 +1,46 @@
-name: GHPages Deploy CI
+name: Deploy static content to GHPages
 
 on:
   # Triggers the workflow on push only for the "master" branch
   push:
     branches: [ "master" ]
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
 
 jobs:
   build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: checkout
+      - name: Checkout 🔁
         uses: actions/checkout@v3
-      
-      - uses: actions/setup-node@v3
+
+      - name: Set up Node 🛠
+        uses: actions/setup-node@v3
         with:
           node-version: 16
+          cache: 'npm'
         
-      - name: install dependencies & build files
+      - name: Install dependencies & Build files 💻
         run: |
           npm install  
           npm run build
-     
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
+
+      - name: Upload artifact 📥
+        uses: actions/upload-pages-artifact@v1
         with:
-          branch: gh-pages
-          folder: dist
+          # Upload dist repository
+          path: './dist'
+     
+      - name: Deploy to GitHub Pages 🚀
+        id: deployment
+        uses: actions/deploy-pages@v1
         
